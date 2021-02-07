@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Андрей Шорников](https://up.htmlacademy.ru/react/6/user/1447805).
-* Наставник: `Неизвестно`.
+* Наставник: [Владимир Турецкий](https://htmlacademy.ru/blog/boost/tools/git-console).
 
 ---
 
