@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Footer from '../footer/footer';
 import MovieCardSmall from '../movie-card-small/movie-card-small';
 import MovieCard from '../movie-card/movie-card';
+
 const Main = (props) => {
   const {title, genre, year} = props;
 
