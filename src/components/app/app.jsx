@@ -5,7 +5,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Main from '../main/main';
 import Login from '../login/login';
 import MyList from '../my-list/my-list';
-import Review from '../review/review';
+import AddReview from '../add-review/add-review';
 import Film from '../film/film';
 import Player from '../player/player';
 import NotFound from '../not-found/not-found';
@@ -29,7 +29,7 @@ const App = (props) => {
         )}
         />
         <Route path="/films/:id/review" exact render={() => (
-          <Review title={title} />
+          <AddReview films={films} />
         )}
         />
         <Route path="/films/:id" exact render={() => (

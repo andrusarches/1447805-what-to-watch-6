@@ -6,12 +6,6 @@ import FILM_MOCK_DATA from './mocks/films.js';
 
 const rootElement = document.querySelector(`#root`);
 
-/* eslint-disable no-console */
-
-console.log(FILM_MOCK_DATA);
-
-window.data = FILM_MOCK_DATA;
-
 const MockMovieCardData = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,

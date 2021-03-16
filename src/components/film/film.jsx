@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {useParams, useHistory} from "react-router-dom";
+import {Link, useParams, useHistory} from "react-router-dom";
 import filmDataValidation from '../../const';
 
 import Footer from '../footer/footer';
@@ -29,6 +29,7 @@ const Film = ({films}) => {
 
 
   const playerHref = `/player/${selectedFilm.id}`;
+  const reviewHref = `/films/${selectedFilm.id}/review`;
   const history = useHistory();
 
 
@@ -83,7 +84,7 @@ const Film = ({films}) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                <Link className="btn movie-card__button" to={reviewHref}>Add review</Link>
               </div>
             </div>
           </div>
