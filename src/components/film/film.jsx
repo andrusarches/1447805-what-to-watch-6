@@ -1,34 +1,77 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {useParams, useHistory} from "react-router-dom";
+import filmDataValidation from '../../const';
 
-import Header from '../header/header';
 import Footer from '../footer/footer';
 
-const Film = (props) => {
-  const {title, genre, year} = props;
+/* eslint-disable no-console */
+
+
+const Film = ({films}) => {
+  const id = useParams().id;
+  const selectedFilm = films.find((film) => film.id === id);
+  const {
+    title,
+    genre,
+    released,
+    backgroundImage,
+    posterImage,
+    backgroundColor,
+    director,
+    starring,
+    description,
+  } = selectedFilm;
+
+  const style = {
+    background: backgroundColor
+  };
+
+
+  const playerHref = `/player/${selectedFilm.id}`;
+  const history = useHistory();
+
+
+  const onMouseClickPlay = () => {
+    history.push(playerHref);
+  };
 
   return (
     <React.Fragment>
-      <section className="movie-card movie-card--full">
+      <section className="movie-card movie-card--full" style={style}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt={title} />
+            <img src={backgroundImage} alt={title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <Header />
+          <header className="page-header movie-card__head">
+            <div className="logo">
+              <a href="main.html" className="logo__link">
+                <span className="logo__letter logo__letter--1">W</span>
+                <span className="logo__letter logo__letter--2">T</span>
+                <span className="logo__letter logo__letter--3">W</span>
+              </a>
+            </div>
+
+            <div className="user-block">
+              <div className="user-block__avatar">
+                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              </div>
+            </div>
+          </header>
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
               <h2 className="movie-card__title">{title}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{year}</span>
+                <span className="movie-card__year">{released}</span>
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button onClick={onMouseClickPlay} className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -49,7 +92,7 @@ const Film = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={props.title + ` - постер`} width="218" height="327" />
+              <img src={posterImage} alt={selectedFilm.title + ` - poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -76,13 +119,11 @@ const Film = (props) => {
               </div>
 
               <div className="movie-card__text">
-                <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&#39;s friend and protege.</p>
+                <p>{description}</p>
 
-                <p>Gustave prides himself on providing first-className service to the hotel&#39;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&#39;s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
+                <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
-                <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
-
-                <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
+                <p className="movie-card__starring"><strong>Starring: {starring.join(`, `)}</strong></p>
               </div>
             </div>
           </div>
@@ -139,9 +180,9 @@ const Film = (props) => {
 };
 
 Film.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired
+  films: PropTypes.arrayOf(
+      filmDataValidation
+  ).isRequired,
 };
 
 export default Film;

@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Header from '../header/header';
-
 const MovieCard = (props) => {
-  const {title, genre, year} = props;
+  const {title, genre, released} = props;
 
   return (
     <section className="movie-card">
@@ -14,7 +12,21 @@ const MovieCard = (props) => {
 
       <h1 className="visually-hidden">WTW</h1>
 
-      <Header />
+      <header className="page-header movie-card__head">
+        <div className="logo">
+          <a href="main.html" className="logo__link">
+            <span className="logo__letter logo__letter--1">W</span>
+            <span className="logo__letter logo__letter--2">T</span>
+            <span className="logo__letter logo__letter--3">W</span>
+          </a>
+        </div>
+
+        <div className="user-block">
+          <div className="user-block__avatar">
+            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+          </div>
+        </div>
+      </header>
 
       <div className="movie-card__wrap">
         <div className="movie-card__info">
@@ -26,7 +38,7 @@ const MovieCard = (props) => {
             <h2 className="movie-card__title">{title}</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{year}</span>
+              <span className="movie-card__year">{released}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -53,7 +65,7 @@ const MovieCard = (props) => {
 MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired
+  released: PropTypes.number.isRequired
 };
 
 export default MovieCard;

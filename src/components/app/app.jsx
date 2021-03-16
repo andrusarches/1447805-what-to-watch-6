@@ -1,4 +1,5 @@
 import React from 'react';
+import filmDataValidation from '../../const';
 import PropTypes from 'prop-types';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Main from '../main/main';
@@ -10,13 +11,13 @@ import Player from '../player/player';
 import NotFound from '../not-found/not-found';
 
 const App = (props) => {
-  const {title, genre, year} = props;
+  const {title, genre, released, films} = props;
 
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact render={() => (
-          <Main title={title} genre={genre} year={year} />
+          <Main title={title} genre={genre} released={released} films={films} />
         )}
         />
         <Route path="/login" exact render={() => (
@@ -24,7 +25,7 @@ const App = (props) => {
         )}
         />
         <Route path="/myList" exact render={() => (
-          <MyList />
+          <MyList films={films} />
         )}
         />
         <Route path="/films/:id/review" exact render={() => (
@@ -32,11 +33,11 @@ const App = (props) => {
         )}
         />
         <Route path="/films/:id" exact render={() => (
-          <Film title={title} genre={genre} year={year} />
+          <Film films={films} />
         )}
         />
         <Route path="/player/:id" exact render={() => (
-          <Player title={title} />
+          <Player films={films} />
         )}
         />
 
@@ -52,7 +53,8 @@ const App = (props) => {
 App.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired
+  released: PropTypes.number.isRequired,
+  films: PropTypes.arrayOf(filmDataValidation).isRequired,
 };
 
 export default App;

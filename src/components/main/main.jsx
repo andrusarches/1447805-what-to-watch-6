@@ -1,16 +1,17 @@
 import React from 'react';
+import filmDataValidation from '../../const';
 import PropTypes from 'prop-types';
 
 import Footer from '../footer/footer';
-import MovieCardSmall from '../movie-card-small/movie-card-small';
+import MoviesList from '../movies-list/movies-list';
 import MovieCard from '../movie-card/movie-card';
 
 const Main = (props) => {
-  const {title, genre, year} = props;
+  const {title, genre, released, films} = props;
 
   return (
     <React.Fragment>
-      <MovieCard title={title} genre={genre} year={year} />
+      <MovieCard title={title} genre={genre} released={released} />
 
       <div className="page-content">
         <section className="catalog">
@@ -49,9 +50,7 @@ const Main = (props) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            <MovieCardSmall />
-          </div>
+          <MoviesList films={films} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -67,7 +66,10 @@ const Main = (props) => {
 Main.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired
+  released: PropTypes.number.isRequired,
+  films: PropTypes.arrayOf(
+      filmDataValidation
+  ).isRequired,
 };
 
 export default Main;

@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import filmDataValidation from '../../const';
+import {useParams} from "react-router-dom";
 
-const Player = (props) => {
-  const {title} = props;
+const Player = ({films}) => {
+  const id = useParams().id;
+  const {title, videoLink} = films.find((filmData) => filmData.id === id);
 
   return (
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+      <video src={videoLink} className="player__video" poster="img/player-poster.jpg"></video>
 
       <button type="button" className="player__exit">Exit</button>
 
@@ -41,7 +44,9 @@ const Player = (props) => {
 };
 
 Player.propTypes = {
-  title: PropTypes.string.isRequired
+  films: PropTypes.arrayOf(
+      filmDataValidation
+  ).isRequired,
 };
 
 export default Player;
