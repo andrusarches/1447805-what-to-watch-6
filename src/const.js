@@ -20,4 +20,6 @@ const filmDataValidation = PropTypes.shape({
   isFavorite: PropTypes.bool.isRequired,
 }).isRequired;
 
-export default filmDataValidation;
+const PLAYER_DELAY_IN_MS = 1000;
+
+export {filmDataValidation, PLAYER_DELAY_IN_MS};

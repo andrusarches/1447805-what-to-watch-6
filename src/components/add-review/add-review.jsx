@@ -1,5 +1,5 @@
 import React from 'react';
-import filmDataValidation from '../../const';
+import {filmDataValidation} from '../../const';
 import PropTypes from 'prop-types';
 import {Link, useParams} from 'react-router-dom';
 import AddReviewForm from '../add-review-form/add-review-form';

@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link, useParams, useHistory} from "react-router-dom";
-import filmDataValidation from '../../const';
+import {filmDataValidation} from '../../const';
 
 import Footer from '../footer/footer';
-
-/* eslint-disable no-console */
-
 
 const Film = ({films}) => {
   const id = useParams().id;
@@ -27,11 +24,9 @@ const Film = ({films}) => {
     background: backgroundColor
   };
 
-
   const playerHref = `/player/${selectedFilm.id}`;
   const reviewHref = `/films/${selectedFilm.id}/review`;
   const history = useHistory();
-
 
   const onMouseClickPlay = () => {
     history.push(playerHref);

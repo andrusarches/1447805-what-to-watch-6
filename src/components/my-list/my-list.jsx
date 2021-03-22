@@ -1,5 +1,5 @@
 import React from 'react';
-import filmDataValidation from '../../const';
+import {filmDataValidation} from '../../const';
 import PropTypes from 'prop-types';
 
 import MoviesList from '../movies-list/movies-list';

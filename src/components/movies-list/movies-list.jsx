@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import filmDataValidation from '../../const';
+import {filmDataValidation} from '../../const';
 import PropTypes from 'prop-types';
 import MovieCardSmall from '../movie-card-small/movie-card-small';
 

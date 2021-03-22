@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import filmDataValidation from '../../const';
+import {filmDataValidation} from '../../const';
 import {useParams} from "react-router-dom";
 
 const Player = ({films}) => {
