@@ -1,5 +1,5 @@
 import React from 'react';
-import {filmDataValidation} from '../../const';
+import {filmDataValidation, INITIAL_CARD_DISPLAY_COUNT} from '../../const';
 import PropTypes from 'prop-types';
 
 import Footer from '../footer/footer';
@@ -50,7 +50,7 @@ const Main = (props) => {
             </li>
           </ul>
 
-          <MoviesList films={films} />
+          <MoviesList films={films} cardDisplayCount={INITIAL_CARD_DISPLAY_COUNT}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>

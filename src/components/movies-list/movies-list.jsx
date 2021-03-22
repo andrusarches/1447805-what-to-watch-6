@@ -1,14 +1,21 @@
 import React, {useState} from 'react';
-import {filmDataValidation} from '../../const';
+import {filmDataValidation, MORE_LIKE_THIS_MAX_CARD_COUNT} from '../../const';
 import PropTypes from 'prop-types';
 import MovieCardSmall from '../movie-card-small/movie-card-small';
 
-const MoviesList = ({films}) => {
+const MoviesList = ({films, cardDisplayCount}) => {
   const [, setSelectedFilmId] = useState(null);
+  const filmsToBeDisplayed = null;
+
+  if (cardDisplayCount === MORE_LIKE_THIS_MAX_CARD_COUNT) {
+    filmsToBeDisplayed = films.slice(0, cardDisplayCount);
+  } else {
+    filmsToBeDisplayed = films;
+  }
 
   return (
     <div className="catalog__movies-list">
-      {films.map((filmData) => (
+      {filmsToBeDisplayed.map((filmData) => (
         <MovieCardSmall key={filmData.id} filmData={filmData} setSelectedFilmId={setSelectedFilmId} />
       ))}
     </div>
@@ -19,6 +26,7 @@ MoviesList.propTypes = {
   films: PropTypes.arrayOf(
       filmDataValidation
   ).isRequired,
+  cardDisplayCount: PropTypes.number.isRequired,
 };
 
 export default MoviesList;

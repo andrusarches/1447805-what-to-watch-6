@@ -22,4 +22,16 @@ const filmDataValidation = PropTypes.shape({
 
 const PLAYER_DELAY_IN_MS = 1000;
 
-export {filmDataValidation, PLAYER_DELAY_IN_MS};
+const MINUTES_IN_HOUR = 60;
+
+const MORE_LIKE_THIS_MAX_CARD_COUNT = 4;
+
+const INITIAL_CARD_DISPLAY_COUNT = 8;
+
+const FilmTabType = {
+  OVERVIEW: `OVERVIEW`,
+  DETAILS: `DETAILS`,
+  REVIEWS: `REVIEWS`,
+};
+
+export {filmDataValidation, PLAYER_DELAY_IN_MS, FilmTabType, MINUTES_IN_HOUR, MORE_LIKE_THIS_MAX_CARD_COUNT, INITIAL_CARD_DISPLAY_COUNT};
