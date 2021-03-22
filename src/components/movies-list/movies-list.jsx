@@ -5,7 +5,7 @@ import MovieCardSmall from '../movie-card-small/movie-card-small';
 
 const MoviesList = ({films, cardDisplayCount}) => {
   const [, setSelectedFilmId] = useState(null);
-  const filmsToBeDisplayed = null;
+  let filmsToBeDisplayed = null;
 
   if (cardDisplayCount === MORE_LIKE_THIS_MAX_CARD_COUNT) {
     filmsToBeDisplayed = films.slice(0, cardDisplayCount);
